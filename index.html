@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Hotel Northland - Menus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['Times New Roman', 'Times', 'serif'],
+              sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                dark: '#1c1917', // stone-900
+                accent: '#44403c', // stone-700
+                bg: '#fafaf9', // stone-50
+                surface: '#ffffff',
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Ensure full height for the app container */
+      html, body, #root {
+        height: 100%;
+        margin: 0;
+        background-color: #fafaf9;
+      }
+      /* Hide scrollbar for iframe container but allow scrolling */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
