@@ -9,10 +9,17 @@
     :root {
       --bg: #F7F7F2;
       --card-bg: #A3BAD0;
-      --accent: #3C5C78;
-      --accent-soft: rgba(60, 92, 120, 0.15);
+      --header-bg: #3C5C78;   /* accordion header */
+      --header-text: #ffffff;
+
+      --panel-bg: rgba(247, 247, 242, 0.92); /* light panel inside card */
+      --panel-border: rgba(60, 92, 120, 0.18);
+
       --text-main: #1f2933;
-      --text-muted: #374151;
+      --text-muted: rgba(31, 41, 51, 0.88);
+
+      --link: #1a3550;
+      --link-hover: #0f2438;
     }
 
     * { box-sizing: border-box; }
@@ -35,7 +42,7 @@
 
     .card {
       width: 100%;
-      max-width: 560px;
+      max-width: 620px;
       background: var(--card-bg);
       border-radius: 18px;
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
@@ -47,7 +54,6 @@
       font-size: 1.1rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-main);
       margin: 0 0 4px;
     }
 
@@ -56,8 +62,8 @@
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-main);
       margin: 0 0 18px;
+      opacity: 0.95;
     }
 
     .title {
@@ -68,8 +74,8 @@
     .subtitle {
       font-size: 0.95rem;
       color: var(--text-muted);
-      margin: 0 0 24px;
-      line-height: 1.4;
+      margin: 0 0 22px;
+      line-height: 1.45;
     }
 
     .menu-group-label {
@@ -80,31 +86,36 @@
       margin: 0 0 14px;
     }
 
-    .buttons {
+    /* Accordion list */
+    .accordion {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       margin-bottom: 18px;
       text-align: left;
     }
 
-    .menu-btn {
+    details.menu {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--panel-border);
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    /* Remove default marker */
+    summary::-webkit-details-marker { display: none; }
+    summary::marker { content: ""; }
+
+    summary.menu-header {
       display: flex;
       align-items: center;
       gap: 14px;
       width: 100%;
-      padding: 18px 20px;
-      border-radius: 14px;
-      text-decoration: none;
-      background-color: var(--accent);
-      color: #ffffff;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-      transition: transform 0.08s ease, box-shadow 0.08s ease;
-    }
-
-    .menu-btn:active {
-      transform: translateY(1px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      padding: 16px 16px;
+      cursor: pointer;
+      background: var(--header-bg);
+      color: var(--header-text);
+      user-select: none;
     }
 
     .menu-logo {
@@ -115,125 +126,295 @@
       filter: brightness(0) invert(1);
     }
 
-    .menu-content {
+    .menu-headtext {
+      flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       gap: 4px;
-      flex: 1;
-      min-width: 0;
     }
 
     .menu-title {
       font-size: 1.05rem;
-      font-weight: 600;
+      font-weight: 700;
+      line-height: 1.15;
     }
 
     .menu-desc {
-      font-size: 0.9rem;
-      opacity: 0.9;
+      font-size: 0.92rem;
+      opacity: 0.92;
       line-height: 1.35;
     }
 
-    .menu-hours {
-      font-size: 0.85rem;
-      opacity: 0.9;
-      line-height: 1.35;
-    }
-
-    .arrow {
-      font-size: 1.4rem;
+    .chev {
+      font-size: 1.35rem;
       line-height: 1;
       flex-shrink: 0;
-      margin-left: 10px;
+      transform: rotate(0deg);
+      transition: transform 0.12s ease;
+      opacity: 0.95;
+    }
+
+    details[open] .chev {
+      transform: rotate(90deg);
+    }
+
+    .menu-panel {
+      background: var(--panel-bg);
+      padding: 14px 16px 16px;
+      border-top: 1px solid var(--panel-border);
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .info-row {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .label {
+      font-weight: 700;
+      color: var(--text-main);
+      min-width: 140px;
+    }
+
+    .value {
+      color: var(--text-muted);
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      background: rgba(60, 92, 120, 0.10);
+      border: 1px solid rgba(60, 92, 120, 0.22);
+      color: var(--link);
+      font-weight: 650;
+    }
+
+    .action-link:hover {
+      background: rgba(60, 92, 120, 0.14);
+      color: var(--link-hover);
+    }
+
+    .action-link .arrow {
+      font-size: 1.15rem;
+      line-height: 1;
+      opacity: 0.9;
     }
 
     .footnote {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: rgba(31, 41, 51, 0.85);
       margin: 0;
       text-align: center;
+      line-height: 1.35;
     }
 
     @media (min-width: 600px) {
       .card { padding: 34px 30px 28px; }
       .title { font-size: 1.7rem; }
+      .actions { flex-direction: row; }
+      .action-link { width: 100%; }
     }
   </style>
 </head>
 
 <body>
   <main class="page">
-    <section class="card">
+    <section class="card" aria-label="Hotel Northland in-room menus">
       <p class="hotel-name">Hotel Northland</p>
       <p class="collection">Autograph Collection</p>
 
       <h1 class="title">In-Room Dining &amp; Beverage Menus</h1>
       <p class="subtitle">
-        Select a menu below to view offerings, hours, and call to place your room service order.
+        Tap a menu below to view details, hours, and quick links to order or reserve.
       </p>
 
       <p class="menu-group-label">Available Menus</p>
 
-      <div class="buttons">
-        <a
-          class="menu-btn"
-          href="https://app.menuvative.com/embed/1.0/menu?menuId=2915&width=600"
-          target="_blank"
-        >
-          <img class="menu-logo" src="walnut-logo.png" alt="Walnut Room logo" />
-          <div class="menu-content">
-            <div class="menu-title">Walnut Room</div>
-            <div class="menu-desc">Breakfast favorites, classic brunch dishes, and fresh coffee.</div>
-            <div class="menu-hours">(920) 770-2399 · Daily 6 a.m.–11 a.m.</div>
-          </div>
-          <div class="arrow">›</div>
-        </a>
+      <div class="accordion">
 
-        <a
-          class="menu-btn"
-          href="https://app.menuvative.com/embed/1.0/menu?menuId=1806&width=600"
-          target="_blank"
-        >
-          <img class="menu-logo" src="poke-logo.png" alt="Poke the Bear logo" />
-          <div class="menu-content">
-            <div class="menu-title">Poke the Bear Regular Menu</div>
-            <div class="menu-desc">Burgers, wings, sandwiches, and classic pub favorites.</div>
-            <div class="menu-hours">(920) 770-2433 · Daily 11 a.m.–9 p.m.</div>
-          </div>
-          <div class="arrow">›</div>
-        </a>
+        <!-- Walnut Room -->
+        <details class="menu">
+          <summary class="menu-header">
+            <img class="menu-logo" src="walnut-logo.png" alt="Walnut Room logo" />
+            <div class="menu-headtext">
+              <div class="menu-title">Walnut Room</div>
+              <div class="menu-desc">Breakfast favorites, classic brunch dishes, and fresh coffee.</div>
+            </div>
+            <div class="chev">›</div>
+          </summary>
 
-        <a
-          class="menu-btn"
-          href="https://app.menuvative.com/embed/1.0/menu?menuId=2925&width=600"
-          target="_blank"
-        >
-          <img class="menu-logo" src="poke-logo.png" alt="Poke the Bear logo" />
-          <div class="menu-content">
-            <div class="menu-title">Poke the Bear Late Night Menu</div>
-            <div class="menu-desc">Late-night bites and bar favorites for evening cravings.</div>
-            <div class="menu-hours">(920) 770-2433 · Daily 9 p.m.–11 p.m.</div>
-          </div>
-          <div class="arrow">›</div>
-        </a>
+          <div class="menu-panel">
+            <div class="info-grid">
+              <div class="info-row">
+                <div class="label">Hours</div>
+                <div class="value">Daily 6 a.m.–11 a.m.</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Phone</div>
+                <div class="value"><a href="tel:+19207702399">(920) 770-2399</a></div>
+              </div>
+            </div>
 
-        <a
-          class="menu-btn"
-          href="https://app.menuvative.com/embed/1.0/menu?menuId=3070&width=600"
-          target="_blank"
-        >
-          <img class="menu-logo" src="hotel-logo.png" alt="Hotel Northland logo" />
-          <div class="menu-content">
-            <div class="menu-title">Wine Menu</div>
-            <div class="menu-desc">Curated wines by the glass and bottle.</div>
-            <div class="menu-hours">(920) 770-2433 · Daily 6 a.m.–11 p.m.</div>
+            <div class="actions">
+              <a class="action-link"
+                 href="https://app.menuvative.com/embed/1.0/menu?menuId=2915&width=600"
+                 target="_blank" rel="noopener noreferrer">
+                View Menu <span class="arrow">›</span>
+              </a>
+
+              <a class="action-link"
+                 href="PASTE_WALNUT_RESERVATION_LINK_HERE"
+                 target="_blank" rel="noopener noreferrer">
+                Book a Reservation <span class="arrow">›</span>
+              </a>
+            </div>
           </div>
-          <div class="arrow">›</div>
-        </a>
+        </details>
+
+        <!-- Poke the Bear Regular Menu -->
+        <details class="menu">
+          <summary class="menu-header">
+            <img class="menu-logo" src="poke-logo.png" alt="Poke the Bear logo" />
+            <div class="menu-headtext">
+              <div class="menu-title">Poke the Bear Regular Menu</div>
+              <div class="menu-desc">Burgers, wings, sandwiches, and classic pub favorites.</div>
+            </div>
+            <div class="chev">›</div>
+          </summary>
+
+          <div class="menu-panel">
+            <div class="info-grid">
+              <div class="info-row">
+                <div class="label">Hours</div>
+                <div class="value">Daily 11 a.m.–9 p.m.</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Phone</div>
+                <div class="value"><a href="tel:+19207702433">(920) 770-2433</a></div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="action-link"
+                 href="https://app.menuvative.com/embed/1.0/menu?menuId=1806&width=600"
+                 target="_blank" rel="noopener noreferrer">
+                View Menu <span class="arrow">›</span>
+              </a>
+
+              <a class="action-link"
+                 href="PASTE_POKE_RESERVATION_LINK_HERE"
+                 target="_blank" rel="noopener noreferrer">
+                Book a Reservation <span class="arrow">›</span>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Poke the Bear Late Night Menu -->
+        <details class="menu">
+          <summary class="menu-header">
+            <img class="menu-logo" src="poke-logo.png" alt="Poke the Bear logo" />
+            <div class="menu-headtext">
+              <div class="menu-title">Poke the Bear Late Night Menu</div>
+              <div class="menu-desc">Late-night bites and bar favorites for evening cravings.</div>
+            </div>
+            <div class="chev">›</div>
+          </summary>
+
+          <div class="menu-panel">
+            <div class="info-grid">
+              <div class="info-row">
+                <div class="label">Hours</div>
+                <div class="value">Daily 9 p.m.–11 p.m.</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Phone</div>
+                <div class="value"><a href="tel:+19207702433">(920) 770-2433</a></div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="action-link"
+                 href="https://app.menuvative.com/embed/1.0/menu?menuId=2925&width=600"
+                 target="_blank" rel="noopener noreferrer">
+                View Menu <span class="arrow">›</span>
+              </a>
+
+              <a class="action-link"
+                 href="PASTE_POKE_LATE_NIGHT_RESERVATION_LINK_HERE"
+                 target="_blank" rel="noopener noreferrer">
+                Book a Reservation <span class="arrow">›</span>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Wine Menu -->
+        <details class="menu">
+          <summary class="menu-header">
+            <img class="menu-logo" src="hotel-logo.png" alt="Hotel Northland logo" />
+            <div class="menu-headtext">
+              <div class="menu-title">Wine Menu</div>
+              <div class="menu-desc">Curated wines by the glass and bottle.</div>
+            </div>
+            <div class="chev">›</div>
+          </summary>
+
+          <div class="menu-panel">
+            <div class="info-grid">
+              <div class="info-row">
+                <div class="label">Hours</div>
+                <div class="value">Daily 6 a.m.–11 p.m.</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Phone</div>
+                <div class="value"><a href="tel:+19207702433">(920) 770-2433</a></div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="action-link"
+                 href="https://app.menuvative.com/embed/1.0/menu?menuId=3070&width=600"
+                 target="_blank" rel="noopener noreferrer">
+                View Menu <span class="arrow">›</span>
+              </a>
+
+              <a class="action-link"
+                 href="PASTE_WINE_RESERVATION_LINK_HERE"
+                 target="_blank" rel="noopener noreferrer">
+                Book a Reservation <span class="arrow">›</span>
+              </a>
+            </div>
+          </div>
+        </details>
+
       </div>
 
       <p class="footnote">
         Menus open in a new window and always reflect the most current offerings.
+        Phone links will dial directly from a mobile device.
       </p>
     </section>
   </main>
