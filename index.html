@@ -7,12 +7,12 @@
 
   <style>
     :root {
-      --bg: #f5f5f5;
-      --card-bg: #ffffff;
-      --accent: #164734;
-      --accent-soft: #e2ece7;
-      --text-main: #222222;
-      --text-muted: #555555;
+      --bg: #F7F7F2;
+      --card-bg: #A3BAD0;
+      --accent: #3C5C78;
+      --accent-soft: rgba(60, 92, 120, 0.15);
+      --text-main: #1f2933;
+      --text-muted: #374151;
     }
 
     * { box-sizing: border-box; }
@@ -38,7 +38,7 @@
       max-width: 560px;
       background: var(--card-bg);
       border-radius: 18px;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
       padding: 30px 24px 26px;
       text-align: center;
     }
@@ -47,7 +47,7 @@
       font-size: 1.1rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-main);
       margin: 0 0 4px;
     }
 
@@ -56,12 +56,12 @@
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-main);
       margin: 0 0 18px;
     }
 
     .title {
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       margin: 0 0 8px;
     }
 
@@ -88,7 +88,6 @@
       text-align: left;
     }
 
-    /* Button “card” */
     .menu-btn {
       display: flex;
       align-items: center;
@@ -97,22 +96,15 @@
       padding: 18px 20px;
       border-radius: 14px;
       text-decoration: none;
-      background-color: var(--accent-soft);
-      color: var(--accent);
-      border: 1px solid rgba(22, 71, 52, 0.18);
-      transition: transform 0.08s ease, box-shadow 0.08s ease;
-    }
-
-    .menu-btn.primary {
       background-color: var(--accent);
       color: #ffffff;
-      border: none;
-      box-shadow: 0 10px 20px rgba(22, 71, 52, 0.28);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
     }
 
     .menu-btn:active {
       transform: translateY(1px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
     }
 
     .menu-logo {
@@ -120,6 +112,7 @@
       height: 42px;
       object-fit: contain;
       flex-shrink: 0;
+      filter: brightness(0) invert(1);
     }
 
     .menu-content {
@@ -137,19 +130,14 @@
 
     .menu-desc {
       font-size: 0.9rem;
-      color: var(--text-muted);
+      opacity: 0.9;
       line-height: 1.35;
     }
 
     .menu-hours {
       font-size: 0.85rem;
-      color: var(--text-muted);
+      opacity: 0.9;
       line-height: 1.35;
-    }
-
-    .menu-btn.primary .menu-desc,
-    .menu-btn.primary .menu-hours {
-      color: rgba(255, 255, 255, 0.9);
     }
 
     .arrow {
@@ -168,14 +156,14 @@
 
     @media (min-width: 600px) {
       .card { padding: 34px 30px 28px; }
-      .title { font-size: 1.65rem; }
+      .title { font-size: 1.7rem; }
     }
   </style>
 </head>
 
 <body>
   <main class="page">
-    <section class="card" aria-label="Hotel Northland in-room menus">
+    <section class="card">
       <p class="hotel-name">Hotel Northland</p>
       <p class="collection">Autograph Collection</p>
 
@@ -188,10 +176,9 @@
 
       <div class="buttons">
         <a
-          class="menu-btn primary"
+          class="menu-btn"
           href="https://app.menuvative.com/embed/1.0/menu?menuId=2915&width=600"
           target="_blank"
-          rel="noopener noreferrer"
         >
           <img class="menu-logo" src="walnut-logo.png" alt="Walnut Room logo" />
           <div class="menu-content">
@@ -206,7 +193,6 @@
           class="menu-btn"
           href="https://app.menuvative.com/embed/1.0/menu?menuId=1806&width=600"
           target="_blank"
-          rel="noopener noreferrer"
         >
           <img class="menu-logo" src="poke-logo.png" alt="Poke the Bear logo" />
           <div class="menu-content">
@@ -221,7 +207,6 @@
           class="menu-btn"
           href="https://app.menuvative.com/embed/1.0/menu?menuId=2925&width=600"
           target="_blank"
-          rel="noopener noreferrer"
         >
           <img class="menu-logo" src="poke-logo.png" alt="Poke the Bear logo" />
           <div class="menu-content">
@@ -236,7 +221,6 @@
           class="menu-btn"
           href="https://app.menuvative.com/embed/1.0/menu?menuId=3070&width=600"
           target="_blank"
-          rel="noopener noreferrer"
         >
           <img class="menu-logo" src="hotel-logo.png" alt="Hotel Northland logo" />
           <div class="menu-content">
