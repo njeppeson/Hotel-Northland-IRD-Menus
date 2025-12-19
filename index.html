@@ -15,9 +15,7 @@
       --text-muted: #555555;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -37,7 +35,7 @@
 
     .card {
       width: 100%;
-      max-width: 520px;
+      max-width: 560px;
       background: var(--card-bg);
       border-radius: 18px;
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
@@ -90,10 +88,11 @@
       text-align: left;
     }
 
+    /* Button “card” */
     .menu-btn {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 14px;
       width: 100%;
       padding: 18px 20px;
       border-radius: 14px;
@@ -116,10 +115,19 @@
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
     }
 
+    .menu-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
     .menu-content {
       display: flex;
       flex-direction: column;
       gap: 4px;
+      flex: 1;
+      min-width: 0;
     }
 
     .menu-title {
@@ -130,11 +138,13 @@
     .menu-desc {
       font-size: 0.9rem;
       color: var(--text-muted);
+      line-height: 1.35;
     }
 
     .menu-hours {
       font-size: 0.85rem;
       color: var(--text-muted);
+      line-height: 1.35;
     }
 
     .menu-btn.primary .menu-desc,
@@ -144,9 +154,9 @@
 
     .arrow {
       font-size: 1.4rem;
-      margin-left: 16px;
       line-height: 1;
       flex-shrink: 0;
+      margin-left: 10px;
     }
 
     .footnote {
@@ -155,30 +165,35 @@
       margin: 0;
       text-align: center;
     }
+
+    @media (min-width: 600px) {
+      .card { padding: 34px 30px 28px; }
+      .title { font-size: 1.65rem; }
+    }
   </style>
 </head>
 
 <body>
   <main class="page">
-    <section class="card">
+    <section class="card" aria-label="Hotel Northland in-room menus">
       <p class="hotel-name">Hotel Northland</p>
       <p class="collection">Autograph Collection</p>
 
       <h1 class="title">In-Room Dining &amp; Beverage Menus</h1>
       <p class="subtitle">
-        Select a menu below to view current offerings, hours, and call to place
-        your room service order.
+        Select a menu below to view offerings, hours, and call to place your room service order.
       </p>
 
       <p class="menu-group-label">Available Menus</p>
 
       <div class="buttons">
-
         <a
           class="menu-btn primary"
           href="https://app.menuvative.com/embed/1.0/menu?menuId=2915&width=600"
           target="_blank"
+          rel="noopener noreferrer"
         >
+          <img class="menu-logo" src="walnut-logo.png" alt="Walnut Room logo" />
           <div class="menu-content">
             <div class="menu-title">Walnut Room</div>
             <div class="menu-desc">Breakfast favorites, classic brunch dishes, and fresh coffee.</div>
@@ -191,7 +206,9 @@
           class="menu-btn"
           href="https://app.menuvative.com/embed/1.0/menu?menuId=1806&width=600"
           target="_blank"
+          rel="noopener noreferrer"
         >
+          <img class="menu-logo" src="poke-logo.png" alt="Poke the Bear logo" />
           <div class="menu-content">
             <div class="menu-title">Poke the Bear Regular Menu</div>
             <div class="menu-desc">Burgers, wings, sandwiches, and classic pub favorites.</div>
@@ -204,7 +221,9 @@
           class="menu-btn"
           href="https://app.menuvative.com/embed/1.0/menu?menuId=2925&width=600"
           target="_blank"
+          rel="noopener noreferrer"
         >
+          <img class="menu-logo" src="poke-logo.png" alt="Poke the Bear logo" />
           <div class="menu-content">
             <div class="menu-title">Poke the Bear Late Night Menu</div>
             <div class="menu-desc">Late-night bites and bar favorites for evening cravings.</div>
@@ -217,7 +236,9 @@
           class="menu-btn"
           href="https://app.menuvative.com/embed/1.0/menu?menuId=3070&width=600"
           target="_blank"
+          rel="noopener noreferrer"
         >
+          <img class="menu-logo" src="hotel-logo.png" alt="Hotel Northland logo" />
           <div class="menu-content">
             <div class="menu-title">Wine Menu</div>
             <div class="menu-desc">Curated wines by the glass and bottle.</div>
@@ -225,7 +246,6 @@
           </div>
           <div class="arrow">›</div>
         </a>
-
       </div>
 
       <p class="footnote">
