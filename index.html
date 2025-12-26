@@ -11,10 +11,16 @@
       --card-bg: #A3BAD0;
       --header-bg: #3C5C78;
       --header-text: #ffffff;
+
       --panel-bg: rgba(247, 247, 242, 0.95);
       --panel-border: rgba(60, 92, 120, 0.25);
+
       --text-main: #1f2933;
       --text-muted: rgba(31, 41, 51, 0.85);
+
+      --link-bg: rgba(60, 92, 120, 0.12);
+      --link-border: rgba(60, 92, 120, 0.24);
+      --link-text: #16324a;
     }
 
     * { box-sizing: border-box; }
@@ -57,6 +63,7 @@
       text-transform: uppercase;
       margin: 0 0 18px;
       text-align: center;
+      opacity: 0.95;
     }
 
     h1 {
@@ -68,8 +75,9 @@
     .subtitle {
       font-size: 0.95rem;
       text-align: center;
-      margin-bottom: 22px;
+      margin: 0 0 22px;
       color: var(--text-muted);
+      line-height: 1.45;
     }
 
     .accordion {
@@ -78,14 +86,14 @@
       gap: 14px;
     }
 
-    details {
+    details.menu {
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid var(--panel-border);
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.10);
     }
 
-    summary {
+    summary.menu-header {
       list-style: none;
       display: flex;
       align-items: center;
@@ -94,119 +102,17 @@
       cursor: pointer;
       background: var(--header-bg);
       color: var(--header-text);
+      user-select: none;
     }
 
-    summary::-webkit-details-marker { display: none; }
+    summary.menu-header::-webkit-details-marker { display: none; }
 
     .menu-logo {
       width: 42px;
       height: 42px;
       object-fit: contain;
       filter: brightness(0) invert(1);
+      flex-shrink: 0;
     }
 
     .menu-text {
-      flex: 1;
-    }
-
-    .menu-title {
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-
-    .menu-desc {
-      font-size: 0.9rem;
-      opacity: 0.95;
-    }
-
-    .chev {
-      font-size: 1.4rem;
-      transition: transform 0.15s ease;
-    }
-
-    details[open] .chev {
-      transform: rotate(90deg);
-    }
-
-    .panel {
-      background: var(--panel-bg);
-      padding: 16px;
-      border-top: 1px solid var(--panel-border);
-    }
-
-    .info {
-      margin-bottom: 14px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
-
-    .info a {
-      color: #1a3550;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .widget {
-      margin-top: 12px;
-    }
-
-    .footnote {
-      margin-top: 18px;
-      font-size: 0.8rem;
-      text-align: center;
-      color: var(--text-muted);
-    }
-  </style>
-</head>
-
-<body>
-  <main class="page">
-    <section class="card">
-      <p class="hotel-name">Hotel Northland</p>
-      <p class="collection">Autograph Collection</p>
-
-      <h1>In-Room Dining & Beverage Menus</h1>
-      <p class="subtitle">
-        Tap a menu to view hours, contact details, and make a reservation.
-      </p>
-
-      <div class="accordion">
-
-        <!-- Poke the Bear -->
-        <details>
-          <summary>
-            <img src="poke-logo.png" alt="Poke the Bear logo" class="menu-logo" />
-            <div class="menu-text">
-              <div class="menu-title">Poke the Bear</div>
-              <div class="menu-desc">Burgers, wings, pub favorites, and late-night bites.</div>
-            </div>
-            <div class="chev">›</div>
-          </summary>
-
-          <div class="panel">
-            <div class="info">
-              <strong>Hours:</strong> Daily 11 a.m.–11 p.m.<br />
-              <strong>Phone:</strong>
-              <a href="tel:+19207702433">(920) 770-2433</a>
-            </div>
-
-            <div class="widget">
-              <!-- OpenTable Widget -->
-              <script
-                type="text/javascript"
-                src="//www.opentable.com/widget/reservation/loader?rid=1026232&type=standard&theme=wide&color=1&dark=false&iframe=true&domain=com&lang=en-US&newtab=false&ot_source=Restaurant%20website&cfe=true">
-              </script>
-            </div>
-          </div>
-        </details>
-
-      </div>
-
-      <p class="footnote">
-        Menu content updates automatically. Reservation availability is powered by OpenTable.
-      </p>
-    </section>
-  </main>
-</body>
-</html>
