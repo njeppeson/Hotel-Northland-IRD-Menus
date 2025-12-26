@@ -182,6 +182,7 @@
       border: 1px solid var(--link-border);
       color: var(--link-text);
       font-weight: 700;
+      line-height: 1.25;
     }
 
     .action-link .arrow { font-size: 1.15rem; opacity: 0.9; }
@@ -193,9 +194,7 @@
       color: var(--text-main);
     }
 
-    .widget {
-      margin-top: 6px;
-    }
+    .widget { margin-top: 6px; }
 
     .placeholder {
       font-size: 0.9rem;
@@ -218,7 +217,7 @@
     @media (min-width: 600px) {
       .card { padding: 34px 30px 28px; }
       h1 { font-size: 1.7rem; }
-      .actions { flex-direction: row; }
+      .actions { flex-direction: row; flex-wrap: wrap; }
       .action-link { width: 100%; }
     }
   </style>
@@ -232,7 +231,7 @@
 
       <h1>In-Room Dining &amp; Beverage Menus</h1>
       <p class="subtitle">
-        Tap a menu to view hours, contact details, view the menu, and make a reservation where available.
+        Tap a menu to view hours, contact details, and quick links.
       </p>
 
       <div class="accordion">
@@ -264,25 +263,25 @@
 
             <div class="section-title">Make a Reservation</div>
             <div class="placeholder">
-              Reservation widget coming soon. If you’d like this enabled, provide the OpenTable widget script for Walnut Room.
+              Reservation widget coming soon.
             </div>
           </div>
         </details>
 
-        <!-- POKE REGULAR -->
+        <!-- POKE THE BEAR (single dropdown with two menu links) -->
         <details class="menu">
           <summary class="menu-header">
             <img src="poke-logo.png" alt="Poke the Bear logo" class="menu-logo" />
             <div class="menu-text">
-              <div class="menu-title">Poke the Bear Regular Menu</div>
-              <div class="menu-desc">Burgers, wings, sandwiches, and classic pub favorites.</div>
+              <div class="menu-title">Poke the Bear</div>
+              <div class="menu-desc">Burgers, wings, sandwiches, and late-night bites.</div>
             </div>
             <div class="chev">›</div>
           </summary>
 
           <div class="panel">
             <div class="info">
-              <strong>Hours:</strong> Daily 11 a.m.–9 p.m.<br />
+              <strong>Hours:</strong> Daily 11 a.m.–11 p.m.<br />
               <strong>Phone:</strong> <a href="tel:+19207702433">(920) 770-2433</a>
             </div>
 
@@ -290,39 +289,13 @@
               <a class="action-link"
                  href="https://app.menuvative.com/embed/1.0/menu?menuId=1806&width=600"
                  target="_blank" rel="noopener noreferrer">
-                View Menu <span class="arrow">›</span>
+                View Regular Menu (Available 11 a.m.–9 p.m.) <span class="arrow">›</span>
               </a>
-            </div>
 
-            <div class="section-title">Make a Reservation</div>
-            <div class="widget">
-              <script type="text/javascript" src="//www.opentable.com/widget/reservation/loader?rid=1026232&type=standard&theme=wide&color=1&dark=false&iframe=true&domain=com&lang=en-US&newtab=false&ot_source=Restaurant%20website&cfe=true"></script>
-            </div>
-          </div>
-        </details>
-
-        <!-- POKE LATE NIGHT -->
-        <details class="menu">
-          <summary class="menu-header">
-            <img src="poke-logo.png" alt="Poke the Bear logo" class="menu-logo" />
-            <div class="menu-text">
-              <div class="menu-title">Poke the Bear Late Night Menu</div>
-              <div class="menu-desc">Late-night bites and bar favorites for evening cravings.</div>
-            </div>
-            <div class="chev">›</div>
-          </summary>
-
-          <div class="panel">
-            <div class="info">
-              <strong>Hours:</strong> Daily 9 p.m.–11 p.m.<br />
-              <strong>Phone:</strong> <a href="tel:+19207702433">(920) 770-2433</a>
-            </div>
-
-            <div class="actions">
               <a class="action-link"
                  href="https://app.menuvative.com/embed/1.0/menu?menuId=2925&width=600"
                  target="_blank" rel="noopener noreferrer">
-                View Menu <span class="arrow">›</span>
+                View Late Night Menu (Available 9 p.m.–11 p.m.) <span class="arrow">›</span>
               </a>
             </div>
 
@@ -360,7 +333,7 @@
 
             <div class="section-title">Make a Reservation</div>
             <div class="placeholder">
-              Reservation widget coming soon. If you’d like this enabled, provide the OpenTable widget script for Wine (or let me know if Wine should not have reservations).
+              Reservations are not available for the Wine Menu.
             </div>
           </div>
         </details>
@@ -374,121 +347,3 @@
   </main>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hotel Northland – In-Room Menus</title>
-
-  <style>
-    :root {
-      --bg: #F7F7F2;
-      --card-bg: #A3BAD0;
-      --header-bg: #3C5C78;
-      --header-text: #ffffff;
-
-      --panel-bg: rgba(247, 247, 242, 0.95);
-      --panel-border: rgba(60, 92, 120, 0.25);
-
-      --text-main: #1f2933;
-      --text-muted: rgba(31, 41, 51, 0.85);
-
-      --link-bg: rgba(60, 92, 120, 0.12);
-      --link-border: rgba(60, 92, 120, 0.24);
-      --link-text: #16324a;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text-main);
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 24px 16px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 640px;
-      background: var(--card-bg);
-      border-radius: 18px;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
-      padding: 30px 24px 26px;
-    }
-
-    .hotel-name {
-      font-size: 1.05rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin: 0 0 4px;
-      text-align: center;
-    }
-
-    .collection {
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin: 0 0 18px;
-      text-align: center;
-      opacity: 0.95;
-    }
-
-    h1 {
-      font-size: 1.55rem;
-      margin: 0 0 10px;
-      text-align: center;
-    }
-
-    .subtitle {
-      font-size: 0.95rem;
-      text-align: center;
-      margin: 0 0 22px;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
-
-    .accordion {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    details.menu {
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--panel-border);
-      background: rgba(255, 255, 255, 0.10);
-    }
-
-    summary.menu-header {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px;
-      cursor: pointer;
-      background: var(--header-bg);
-      color: var(--header-text);
-      user-select: none;
-    }
-
-    summary.menu-header::-webkit-details-marker { display: none; }
-
-    .menu-logo {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      filter: brightness(0) invert(1);
-      flex-shrink: 0;
-    }
-
-    .menu-text {
