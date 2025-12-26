@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Menu</title>
+
+  <style>
+    :root {
+      --bg: #F7F7F2;
+      --bar: #3C5C78;
+      --barText: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 12px;
+      background: var(--bar);
+      color: var(--barText);
+    }
+
+    .back {
+      appearance: none;
+      border: 0;
+      background: rgba(255,255,255,0.16);
+      color: var(--barText);
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .title {
+      font-weight: 800;
+      font-size: 0.98rem;
+      line-height: 1.2;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .frame-wrap {
+      height: calc(100vh - 56px); /* topbar height */
+      width: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <button class="back" onclick="history.back()">Back</button>
+    <div class="title" id="pageTitle">Menu</div>
+  </div>
+
+  <div class="frame-wrap">
+    <iframe id="menuFrame" title="Menu"></iframe>
+  </div>
+
+  <script>
+    // Read menuId and title from the URL, e.g. menu.html?menuId=1806&title=Poke%20the%20Bear
+    const params = new URLSearchParams(window.location.search);
+    const menuId = params.get("menuId");
+    const title = params.get("title") || "Menu";
+
+    document.title = title;
+    document.getElementById("pageTitle").textContent = title;
+
+    if (!menuId) {
+      document.getElementById("pageTitle").textContent = "Missing menuId";
+    } else {
+      function setMenuSrc() {
+        // Use the actual viewport width so the menu doesn't render “zoomed out”
+        const w = Math.max(320, Math.min(window.innerWidth, 900));
+        const src = `https://app.menuvative.com/embed/1.0/menu?menuId=${encodeURIComponent(menuId)}&width=${w}`;
+        document.getElementById("menuFrame").src = src;
+      }
+
+      setMenuSrc();
+      window.addEventListener("resize", setMenuSrc);
+      window.addEventListener("orientationchange", setMenuSrc);
+    }
+  </script>
+</body>
+</html>
