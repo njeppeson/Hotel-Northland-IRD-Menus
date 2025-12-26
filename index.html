@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hotel Northland – In-Room Menus</title>
 
+  <!-- Google Fonts: Montserrat (for titles) and Source Sans 3 (for body/subtitles) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Source+Sans+3:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #F7F7F2;
@@ -25,10 +30,11 @@
 
     * { box-sizing: border-box; }
 
+    /* Default: all non-title/subtitle text uses Source Sans 3 in italic */
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
+      font-family: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-style: italic;
       background-color: var(--bg);
       color: var(--text-main);
     }
@@ -49,7 +55,11 @@
       padding: 30px 24px 26px;
     }
 
+    /* Titles: Montserrat (stand-in for MINERVA MODERN) | BOLD */
     .hotel-name {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-style: normal;
       font-size: 1.05rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -58,6 +68,9 @@
     }
 
     .collection {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-style: normal;
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -66,13 +79,21 @@
       opacity: 0.95;
     }
 
+    /* Page heading uses Montserrat (stand-in for MINERVA MODERN) bold */
     h1 {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-style: normal;
       font-size: 1.35rem;
       margin: 0 0 14px;
       text-align: center;
     }
 
+    /* Subtitles: Source Sans 3 (stand-in for PRIORI SANS OT) | REGULAR */
     .subtitle {
+      font-family: "Source Sans 3", sans-serif;
+      font-weight: 400;
+      font-style: normal;
       font-size: 0.95rem;
       text-align: center;
       margin: 0 0 22px;
@@ -125,12 +146,18 @@
     }
 
     .menu-title {
+      font-family: "Montserrat", sans-serif;
       font-weight: 700;
+      font-style: normal;
       font-size: 1.05rem;
       line-height: 1.15;
     }
 
+    /* menu descriptions treated as subtitles */
     .menu-desc {
+      font-family: "Source Sans 3", sans-serif;
+      font-weight: 400;
+      font-style: normal;
       font-size: 0.9rem;
       opacity: 0.95;
       line-height: 1.35;
@@ -192,9 +219,11 @@
     .action-link .arrow { font-size: 1.15rem; opacity: 0.9; }
 
     .section-title {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-style: normal;
       margin: 6px 0 10px;
       font-size: 0.95rem;
-      font-weight: 800;
       color: var(--text-main);
     }
 
